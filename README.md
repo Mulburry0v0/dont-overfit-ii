@@ -8,8 +8,17 @@ This project is a competition that challenges mere mortals to model a 20000*300 
 * train.csv - the training set. 250 rows.
 * test.csv - the test set. 19750 rows.
 * sample_submission.csv - a sample submission file in the correct format
+## Packages may use:
+numpy, pandas, matplotlib.pyplot, seaborn, lightgbm, sklearn etc.
 ## General Steps:
-* EDA on the features;
-* Try different models: such as linear models, decision tree;
-* Feature selection;
-* Optimize models.
+1. EDA on the features:
+ * Read Dataset;
+ * Display Dataset.
+2. Try different models:
+ * linear regression;
+ * decision tree etc.
+3. Feature selection:
+ * Plot Features Importance;
+ * Low Importance Features;
+ * Removing Features.
+4. Model training.
