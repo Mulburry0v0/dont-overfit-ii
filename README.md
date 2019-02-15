@@ -11,14 +11,14 @@
 ## Packages may use:
   numpy, pandas, matplotlib.pyplot, seaborn, lightgbm, sklearn etc.
 ## General Steps:
-1. EDA on the features:
+### 1. EDA on the features:
   * Read Dataset;
   * Display Dataset.
-2. Try different models:
+### 2. Try different models:
   * linear regression;
   * decision tree etc.
-3. Feature selection:
+### 3. Feature selection:
   * Plot Features Importance;
   * Low Importance Features;
   * Removing Features.
-4. Model training.
+### 4. Model training.
