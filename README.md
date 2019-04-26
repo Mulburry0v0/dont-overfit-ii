@@ -34,7 +34,7 @@
   * add statistics;
   * add distance.
 ### 5. Current Result:
-  * The best score I have is around 0.85.
+  * The best score I have is around 0.87.
 ### 6. Keep learning and improving:
   * Will try more models, including RandomForest, Adaboost, Bagging, GradientBoosting;
   * Essembling predictions of different methods;
