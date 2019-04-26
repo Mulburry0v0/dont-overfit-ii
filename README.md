@@ -8,9 +8,9 @@
   * `train.csv` - the training set. 250 rows.
   * `test.csv` - the test set. 19750 rows.
   * `sample_submission.csv` - a sample submission file in the correct format
-  * `dont-over-fit.py` - project code
-  * `dont-over-fit.iqynb` - project code in jupyter notebook
-  * `dont-over-fit.pdf` - project report
+  * `dont-overfit.py` - project code
+  * `dont-overfit.iqynb` - project code in jupyter notebook
+  * `dont-overfit.pdf` - project report
   * `submission0.csv`, `submission1.csv`, `submission2.csv`, `submission3.csv` - predict results of different methods, output from project code
 ## Packages need to install:
   ipython, numpy, pandas, matplotlib.pyplot, seaborn, eli5, sklearn etc.
@@ -27,6 +27,8 @@
   * Low Importance Features;
   * Removing Features.
 ### 4. Model improvement:
+  * cross-validation;
+  * regularization;
   * feature selection;
   * parameter optimistic;
   * add statistics;
