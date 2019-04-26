@@ -37,7 +37,7 @@
   * The best score I have is around 0.87.
 ### 6. Keep learning and improving:
   * Will try more models, including RandomForest, Adaboost, Bagging, GradientBoosting;
-  * Essembling predictions of different methods;
+  * Ensembling predictions of different methods;
   * Read more articles to find methods to avoid overfitting, since the methods I know could not improve the result sharply.
 ### 7. References:
   * https://www.kaggle.com/artgor/how-to-not-overfit/notebook#Selected-top_features-+-statistics
