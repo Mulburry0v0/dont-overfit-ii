@@ -8,7 +8,7 @@
 # ## Exploratory Data Analysis(EDA)
 # ### Datacollection
 
-# In[345]:
+# In[1]:
 
 
 import pandas as pd
@@ -18,44 +18,44 @@ train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
 
 
-# In[346]:
+# In[2]:
 
 
 train.shape
 
 
-# In[347]:
+# In[3]:
 
 
 train.head()
 
 
-# In[348]:
+# In[4]:
 
 
 sample_submission = pd.read_csv('sample_submission.csv')
 sample_submission.head()
 
 
-# In[349]:
+# In[5]:
 
 
 test.head()
 
 
-# In[350]:
+# In[6]:
 
 
 train.tail()
 
 
-# In[351]:
+# In[7]:
 
 
 train.columns
 
 
-# In[352]:
+# In[8]:
 
 
 print(train.info())
@@ -63,13 +63,13 @@ print(train.info())
 
 # ### Visualization
 
-# In[353]:
+# In[9]:
 
 
 train['target'].value_counts().plot.bar();
 
 
-# In[354]:
+# In[10]:
 
 
 import seaborn as sns
@@ -82,7 +82,7 @@ ax[1].set_title('target')
 plt.show()
 
 
-# In[355]:
+# In[11]:
 
 
 plt.figure(figsize = (26,24))
@@ -94,7 +94,7 @@ for i, col in enumerate(list(train.columns)[2:30]):
 
 # Values in columns are more or less similar.
 
-# In[356]:
+# In[12]:
 
 
 plt.figure(figsize = (12,4))
@@ -109,19 +109,19 @@ plt.show()
 
 # Columns have mean of 0 +/- 0.15 and std of 1 +/- 0.1.
 
-# In[357]:
+# In[13]:
 
 
 corr = train.corr()['target'].sort_values(ascending = False)
 
 
-# In[358]:
+# In[14]:
 
 
 corr.head(10)
 
 
-# In[359]:
+# In[15]:
 
 
 corr.tail(10)
@@ -129,7 +129,7 @@ corr.tail(10)
 
 # ## Logistic regression
 
-# In[360]:
+# In[16]:
 
 
 from sklearn.model_selection import train_test_split, learning_curve, StratifiedKFold, KFold, cross_val_score, GridSearchCV, RepeatedStratifiedKFold
@@ -141,7 +141,7 @@ X_test = test.drop(['id'], axis = 1)
 
 # Find the best parameters for function 'LogisticRegression'.
 
-# In[361]:
+# In[17]:
 
 
 from sklearn.linear_model import LogisticRegression
@@ -162,7 +162,7 @@ print(log_gs.best_score_)
 
 # Define a function to plot learning curve.
 
-# In[362]:
+# In[18]:
 
 
 def plot_learning_curve(estimator, title, X, y, ylim = None, cv = None, n_jobs = -1, train_sizes = np.linspace(.1, 1.0, 5)):
@@ -188,7 +188,7 @@ def plot_learning_curve(estimator, title, X, y, ylim = None, cv = None, n_jobs =
 
 # Plot the learning curve of log_best.
 
-# In[363]:
+# In[19]:
 
 
 learningCurve = plot_learning_curve(log_best, "LR learning curves",X_train, y_train, cv = StratifiedKFold(n_splits = 5))
@@ -196,7 +196,7 @@ learningCurve = plot_learning_curve(log_best, "LR learning curves",X_train, y_tr
 
 # Define a function to draw roc curve.
 
-# In[364]:
+# In[20]:
 
 
 from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
@@ -240,7 +240,7 @@ def plot_roc(clf, X = X_train, y = y_train, n = 6):
 
 # Plot the roc curve of log_best.
 
-# In[365]:
+# In[21]:
 
 
 roc = plot_roc(log_best)
@@ -249,14 +249,14 @@ roc = plot_roc(log_best)
 # cv_score is far away from training score. It is overfitting. C is responsible for level of regularization and the smaller it is, the bigger the level of regularization it is. 
 # First try C = 0.1
 
-# In[366]:
+# In[22]:
 
 
 log_p0 = LogisticRegression(class_weight = 'balanced', penalty = 'l1', C = 0.1, solver = 'saga', random_state = 42)
 learningCurve0 = plot_learning_curve(log_p0, "LR learning curves", X_train, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[367]:
+# In[23]:
 
 
 roc0 = plot_roc(log_p0)
@@ -264,14 +264,14 @@ roc0 = plot_roc(log_p0)
 
 # Try C = 0.05.
 
-# In[368]:
+# In[24]:
 
 
 log_p1 = LogisticRegression(class_weight = 'balanced', penalty = 'l1', C = 0.05, solver = 'saga', random_state = 42)
 learningCurve1 = plot_learning_curve(log_p1, "LR learning curves", X_train, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[369]:
+# In[25]:
 
 
 roc1 = plot_roc(log_p1)
@@ -279,14 +279,14 @@ roc1 = plot_roc(log_p1)
 
 # Try C = 0.15.
 
-# In[370]:
+# In[26]:
 
 
 log_p2 = LogisticRegression(class_weight = 'balanced', penalty = 'l1', C = 0.15, solver = 'saga', random_state = 42)
 learningCurve2 = plot_learning_curve(log_p2, "LR learning curves", X_train, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[371]:
+# In[27]:
 
 
 roc2 = plot_roc(log_p2)
@@ -296,7 +296,7 @@ roc2 = plot_roc(log_p2)
 
 # Output the first submission file.
 
-# In[372]:
+# In[28]:
 
 
 log_p0.fit(X_train, y_train)
@@ -310,39 +310,39 @@ submission0.to_csv('submission0.csv', index = False)
 
 # Use eli5 to do the feature selection.
 
-# In[373]:
+# In[29]:
 
 
 import eli5
 eli5.show_weights(log_p0,top = 50)
 
 
-# In[374]:
+# In[30]:
 
 
 (log_p0.coef_ != 0).sum()
 
 
-# In[375]:
+# In[31]:
 
 
 top_features = [i[1:] for i in eli5.formatters.as_dataframe.explain_weights_df(log_p0).feature if 'BIAS' not in i]
 X_train_new = train[top_features]
 
 
-# In[376]:
+# In[32]:
 
 
 learningCurve3 = plot_learning_curve(log_p0, "LR learning curves", X_train_new, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[377]:
+# In[33]:
 
 
 roc3 = plot_roc(log_p0,X_train_new)
 
 
-# In[378]:
+# In[34]:
 
 
 log_p0.fit(X_train_new, y_train)
@@ -353,7 +353,7 @@ submission1 = pd.DataFrame({'id':test['id'],
 submission1.to_csv('submission1.csv', index = False)
 
 
-# In[379]:
+# In[35]:
 
 
 X_test_new.head()
@@ -361,7 +361,7 @@ X_test_new.head()
 
 # ## Add new statistics.
 
-# In[380]:
+# In[36]:
 
 
 train['mean'] = train.mean(1)
@@ -372,19 +372,19 @@ X_train_add = train[top_features + ['mean']]
 X_test_add = test[top_features + ['mean']]
 
 
-# In[381]:
+# In[37]:
 
 
 learningCurve4 = plot_learning_curve(log_p0, "LR learning curves", X_train_add, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[382]:
+# In[38]:
 
 
 roc4 = plot_roc(log_p0,X_train_add)
 
 
-# In[383]:
+# In[39]:
 
 
 log_p0.fit(X_train_add, y_train)
@@ -396,7 +396,7 @@ submission2.to_csv('submission2.csv', index = False)
 
 # # Decison Tree
 
-# In[384]:
+# In[40]:
 
 
 from sklearn.tree import DecisionTreeClassifier
@@ -417,13 +417,13 @@ print(tree_best)
 print(trees.best_score_)
 
 
-# In[385]:
+# In[41]:
 
 
 learningCurve5 = plot_learning_curve(tree_best, "DT learning curves", X_train_add, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[386]:
+# In[42]:
 
 
 roc5 = plot_roc(tree_best,X_train_add)
@@ -433,7 +433,7 @@ roc5 = plot_roc(tree_best,X_train_add)
 
 # # Lasso Regression
 
-# In[387]:
+# In[43]:
 
 
 from sklearn.linear_model import Lasso
@@ -456,13 +456,13 @@ print(las_ss)
 print(las_ss.best_score_)
 
 
-# In[388]:
+# In[44]:
 
 
 learningCurve6 = plot_learning_curve(las_best, "Lasso learning curves", X_train, y_train, cv = StratifiedKFold(n_splits = 5))
 
 
-# In[389]:
+# In[45]:
 
 
 def plot_roc0(clf, X = X_train, y = y_train, n = 6):
@@ -496,13 +496,13 @@ def plot_roc0(clf, X = X_train, y = y_train, n = 6):
     plt.show()
 
 
-# In[390]:
+# In[46]:
 
 
 roc6 = plot_roc0(las_best,X_train)
 
 
-# In[391]:
+# In[47]:
 
 
 las_best.fit(X_train_add, y_train)
