@@ -5,13 +5,13 @@
 
   This project is a competition that challenges mere mortals to model a 20000*300 matrix of contiuous variables using 250   training samples. The result should be a prediction of the binary `target` associated with each row, without overfitting to the minimal set of training examples provided.
 ## Files:
-  * `train.csv` - the training set. 250 rows.
-  * `test.csv` - the test set. 19750 rows.
+  * `dataset/train.csv` - the training set. 250 rows.
+  * `dataset/test.csv` - the test set. 19750 rows.
   * `sample_submission.csv` - a sample submission file in the correct format
   * `dont-overfit.py` - project code
   * `dont-overfit.iqynb` - project code in jupyter notebook
   * `dont-overfit.pdf` - project report
-  * `submission0.csv`, `submission1.csv`, `submission2.csv`, `submission3.csv` - predict results of different methods, output from project code
+  * `submission0.csv`, `submission1.csv`, `submission2.csv`, `submission3.csv` in folder `submissions` - predict results of different methods, output from project code
 ## Packages need to install:
   ipython, numpy, pandas, matplotlib.pyplot, seaborn, eli5, sklearn etc.
 ## General Steps:
