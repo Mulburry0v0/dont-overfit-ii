@@ -1,4 +1,4 @@
-# dont-overfit-ii
+# Dont-overfit-ii
 
   This is my EE551 individual project. It is a playground prediction competition on Kaggle. | Name: Lijin Zhou
 ## Proposal:
