@@ -39,7 +39,7 @@
   * Will try more models, including RandomForest, Adaboost, Bagging, GradientBoosting;
   * Ensembling predictions of different methods;
   * Read more articles to find methods to avoid overfitting, since the methods I know could not improve the result sharply.
-### 7. References:
+### 7. Reference:
   * https://www.kaggle.com/artgor/how-to-not-overfit/notebook#Selected-top_features-+-statistics
   * https://www.kaggle.com/mjbahmani/tutorial-on-ensemble-learning-don-t-overfit/notebook#5--Ensemble-Techniques
   * https://www.kaggle.com/trolukovich/keep-calm-and-make-it-simple-easy-0-847
